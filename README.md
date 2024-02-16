@@ -1,4 +1,4 @@
-# sympy_math_intro
+# Sympy: FAST INTRODUCTION FOR MATH STUDENTS
 
 ## Sympy
 Introdução ao Sympy utilizando a plataforma Google Colab.
