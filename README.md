@@ -13,7 +13,7 @@ A principal fonte de inspiração para desenvolvimento dos cadernos será a publ
 O desenvolvimento dos cadernos é realizado com o mínimo de importações possível, bastando para a maioria dos casos apenas a inicialização do módulo sympy.
 
 ## Links:
-Jupyter Notebooks: https://jupyter.org/
-Google Colab: https://colab.research.google.com/
-Sympy: https://www.sympy.org/
-Wolfram/FIFMS: https://www.wolfram.com/language/fast-introduction-for-math-students
+- Jupyter Notebooks: https://jupyter.org/
+- Google Colab: https://colab.research.google.com/
+- Sympy: https://www.sympy.org/
+- Wolfram/FIFMS: https://www.wolfram.com/language/fast-introduction-for-math-students
