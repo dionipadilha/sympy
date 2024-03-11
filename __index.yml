@@ -33,9 +33,27 @@ Geometry:
   - angle between two lines  # line1.angle_between(line2)
   - two-dimensional regions:
     - triangle               # Triangle(p1, p2, p3)
-  - circle                   # Circle(center, radius)
+    - circle                 # Circle(center, radius)
     - ellipse                # Ellipse(center, hradius, vradius, eccentricity)
     - square                 # RegularPolygon(p, 1, 4)
   - area calculation         # region.area
 
 ---
+#3 : Calculus
+
+Calculus:
+  Limits:
+    - limit of a function    # limit(f(x), x, a)
+    - limit at a singularity # limit(sin(x)/x, x, 0)
+    - limit at infinity      # limit(f(x), x, oo)
+    - limit at one side only # limit(f(x), x, 0, '-')
+  Derivatives:
+    - derivative of a function # diff(f(x), x)
+    - nth-order derivative     # diff(f(x), x, n)
+    - partial derivative       # diff(f(x, y), x)
+    - mixed partial derivative # diff(f(x, y), x, y)
+  Integrals:
+    - integral of a function # integrate(f(x), x)
+    - definite integral      # integrate(f(x), (x, a, b))
+    - double integral        # Integral(f(x), x, x)
+    - multiple integrals     # integrate(f(x, y), (x, a, b), (y, c, d))
