@@ -1,4 +1,4 @@
-# sympy.yaml
+# __index_sympy.yaml
 ---
 Rationals:
   - rational object     # Rational(a, b)
