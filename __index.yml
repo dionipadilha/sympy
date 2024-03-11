@@ -1,22 +1,17 @@
 # sympy.yaml
 
----
-#1 : Symbolic Math
- 
 Symbolic Objects:
   - symbolic environment           # from sympy import *, init_session()
   - symbolic variable              # x, a, b, c = symbols('x, a, b, c')
   - symbolic expression            # expr = a*x**2 + b*x + c
   - symbolic equation              # eq = Eq(a*x**2 + b*x + c , 0)
   - symbolic function              # f = Lambda(x, a*x**2 + b*x + c)
-
-Symbolic Manipulations:
-  - evaluate the symbolic function # f(0)
-  - solve equation with function   # solveset(Eq(f(x), 0), x)
-  - solve symbolic equation        # sol = solveset(eq, x)
+  - Symbolic Manipulations:
+    - evaluate the symbolic function # f(0)
+    - solve equation with function   # solveset(Eq(f(x), 0), x)
+    - solve symbolic equation        # sol = solveset(eq, x)
 
 ---
-#2 : Assumptions
 Assumptions:
   - set assumptions           # n = symbols('n', integer=True)
   - assumptions returns       # None, True, False
@@ -25,13 +20,11 @@ Assumptions:
   - predicates                # x.assumptions0
 
 ---
-#3 : Symbolic Geometry
-
 Geometry:
   - primitive object         # point = Point(0, 1)
   - one-dimensional objects  # line = Line(p1, p2)
   - angle between two lines  # line1.angle_between(line2)
-  - two-dimensional regions:
+  - regions:
     - triangle               # Triangle(p1, p2, p3)
     - circle                 # Circle(center, radius)
     - ellipse                # Ellipse(center, hradius, vradius, eccentricity)
@@ -39,8 +32,6 @@ Geometry:
   - area calculation         # region.area
 
 ---
-#3 : Calculus
-
 Calculus:
   Limits:
     - limit of a function    # limit(f(x), x, a)
