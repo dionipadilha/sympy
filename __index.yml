@@ -1,5 +1,58 @@
 # __index_sympy.yaml
----
+
+TrigonometricFunctions:
+  - fundamental # sin, cos, tan
+  - reciprocals # sec, csc, cot
+  - inverse     # asin, acos, atan, atan2, ...
+  - hyperbolic  # sinh, cosh, tanh, ...
+  - 
+  
+Constants:
+  - pi              # pi
+  - Euller          # E
+  - imaginary unity # I**2 = -1
+  - infinity        # oo
+
+ArithmeticOperators:
+  - addition           # a + b
+  - subtraction        # a - b
+  - multiplication     # a * b
+  - raising to a power # a ** b
+  - division           # a / b
+  - floor division     # quotient = a // b
+  - modulos            # remainder = a % b
+
+ComparisonOperators:
+  - greater than             # a > b
+  - less than                # a < b
+  - greater than or equal to # a >= b
+  - less than or equal to    # a <= b
+  - equal                    # a == b
+  - not equal                # a != b
+
+LogicalExpressions:
+  - standard logical operators   # ~ p | p & q
+  - symbolic boolean expressions # (p | q).subs({p: True, q: False})
+  - standard logical notation    # Or(Not(p),And(p, q))
+  - not logical operators        # Not(p), Nor(p, q), Nand(p, q)
+  - exclusive relation           # Exclusive(p, q, x)
+  - exclusive logical operators  # Xor(p, q), Xnor(p, q)
+  - implies relation             # (p >> q)
+  - equivalence relation         # Equivalent(p, q)
+  - if-then-else clause          # ITE(x, p, q).subs({x: True})
+  
+BasicMathFunctions:
+  - square              # power(x, 2)
+  - cube                # power(x, 3)
+  - nth power           # power(x, n)
+  - exponential         # exp(x)
+  - natural logarithm   # log(x), ln(x)
+  - logarithm with base # log(x, b)
+  - square root         # sqrt(x)
+  - cube root           # root(x, n)
+  - nth root            # root(x, n)
+  - absolute value      # Abs(x)
+  
 Rationals:
   - rational object     # Rational(a, b)
   - rational object     # frac = S(a)/b + S(c)/d
@@ -12,7 +65,6 @@ Rationals:
   - decimal to fraction # nsimplify(0.25)
   - cientific notation  # 1.23e-3
 
----
 SymbolicWorkflow:
   - Create a symbolic environment  # from sympy import *, init_session()
   - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
@@ -24,7 +76,6 @@ SymbolicWorkflow:
   - Find specific solutions        # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
   - Plotting a symbolic function   # plot(f(x).subs(coeffs), (x, 0, 5))
   
----
 Assumptions:
   - set assumptions           # n = symbols('n', integer=True)
   - assumptions returns       # None, True, False
@@ -32,7 +83,6 @@ Assumptions:
   - multiple assumptions      # x = symbols('x', real=True, negative=False)
   - predicates                # x.assumptions0
 
----
 Geometry:
   - primitive object         # point = Point(0, 1)
   - one-dimensional objects  # line = Line(p1, p2)
@@ -44,7 +94,6 @@ Geometry:
     - square                 # RegularPolygon(p, 1, 4)
   - area calculation         # region.area
 
----
 Complex:
   - imaginary unity    # I**2 = -1
   - complex number     # z = a + b*I
@@ -61,20 +110,27 @@ PowerComplex:
   - alternate forms                      # expanded_z.rewrite(exp)
   - alternate forms                      # expanded_z.rewrite(exp).factor()
 
----
-Calculus:
-  Limits:
-    - limit of a function    # limit(f(x), x, a)
-    - limit at a singularity # limit(sin(x)/x, x, 0)
-    - limit at infinity      # limit(f(x), x, oo)
-    - limit at one side only # limit(f(x), x, 0, '-')
-  Derivatives:
-    - derivative of a function # diff(f(x), x)
-    - nth-order derivative     # diff(f(x), x, n)
-    - partial derivative       # diff(f(x, y), x)
-    - mixed partial derivative # diff(f(x, y), x, y)
-  Integrals:
-    - integral of a function # integrate(f(x), x)
-    - definite integral      # integrate(f(x), (x, a, b))
-    - double integral        # Integral(f(x), x, x)
-    - multiple integrals     # integrate(f(x, y), (x, a, b), (y, c, d))
+Limits:
+  - limit of a function    # limit(f(x), x, a)
+  - limit at a singularity # limit(sin(x)/x, x, 0)
+  - limit at infinity      # limit(f(x), x, oo)
+  - limit at one side only # limit(f(x), x, 0, '-')
+
+Derivatives:
+  - derivative of a function # diff(f(x), x)
+  - nth-order derivative     # diff(f(x), x, n)
+  - partial derivative       # diff(f(x, y), x)
+  - mixed partial derivative # diff(f(x, y), x, y)
+
+Integrals:
+  - integral of a function # integrate(f(x), x)
+  - definite integral      # integrate(f(x), (x, a, b))
+  - double integral        # Integral(f(x), x, x)
+  - multiple integrals     # integrate(f(x, y), (x, a, b), (y, c, d))
+
+Advanced:
+  - solve differential equations # dsolve(f(x).diff(x, 2) + 9*f(x), f(x))
+  - Laplace transform            # LaplaceTransform(f(t), t, s)
+  - inverse Laplace transform    # inverse_laplace_transform(f(s), s, t)
+  - Fourier Transform            # FourierTransform(f(x), x, k)
+  - inverse Fourier transform    # inverse_fourier_transform(f(k), k, x)
