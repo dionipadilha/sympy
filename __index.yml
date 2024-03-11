@@ -33,7 +33,7 @@ Geometry:
   - angle between two lines  # line1.angle_between(line2)
   - two-dimensional regions:
     - triangle               # Triangle(p1, p2, p3)
-	- circle                 # Circle(center, radius)
+- circle                 # Circle(center, radius)
 	- ellipse                # Ellipse(center, hradius, vradius, eccentricity)
 	- square                 # RegularPolygon(p, 1, 4)
   - area calculation         # region.area
