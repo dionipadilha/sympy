@@ -1,6 +1,19 @@
 # sympy.yaml
 ---
-Symbolic Workflow:
+Rationals:
+  - rational object     # Rational(a, b)
+  - rational object     # frac = S(a)/b + S(c)/d
+  - combines terms      # together(frac)
+  - expand terms        # expand(frac)
+  - pull the term out   # apart(frac)
+  - cancel the terms    # cancel(frac)
+  - decimal notation    # N(frac, precission)
+  - decimal notation    # (frac).evalf(precission)
+  - cientific notation  # 1.23e-3
+  - decimal to fraction # nsimplify(0.25)
+
+---
+SymbolicWorkflow:
   - Create a symbolic environment  # from sympy import *, init_session()
   - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
   - Defining a symbolic expression # expr = a*x**2 + b*x + c
