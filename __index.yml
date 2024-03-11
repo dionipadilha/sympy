@@ -9,8 +9,8 @@ Rationals:
   - cancel the terms    # cancel(frac)
   - decimal notation    # N(frac, precission)
   - decimal notation    # (frac).evalf(precission)
-  - cientific notation  # 1.23e-3
   - decimal to fraction # nsimplify(0.25)
+  - cientific notation  # 1.23e-3
 
 ---
 SymbolicWorkflow:
