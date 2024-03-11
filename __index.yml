@@ -1,16 +1,16 @@
 # sympy.yaml
-
-Symbolic Objects:
-  - symbolic environment           # from sympy import *, init_session()
-  - symbolic variable              # x, a, b, c = symbols('x, a, b, c')
-  - symbolic expression            # expr = a*x**2 + b*x + c
-  - symbolic equation              # eq = Eq(a*x**2 + b*x + c , 0)
-  - symbolic function              # f = Lambda(x, a*x**2 + b*x + c)
-  - Symbolic Manipulations:
-    - evaluate the symbolic function # f(0)
-    - solve equation with function   # solveset(Eq(f(x), 0), x)
-    - solve symbolic equation        # sol = solveset(eq, x)
-
+---
+Symbolic Workflow:
+  - Create a symbolic environment  # from sympy import *, init_session()
+  - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
+  - Defining a symbolic expression # expr = a*x**2 + b*x + c
+  - Defining a symbolic function   # f = Lambda(x, expr)
+  - evaluate the symbolic function # f(0)
+  - Defining an symbolic equation  # quadratic_eq = Eq(f(x), 0)
+  - Solving an symbolic equation   # roots_ = solve(quadratic_equation, x)
+  - Find specific solutions        # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
+  - Plotting a symbolic function   # plot(f(x).subs(coeffs), (x, 0, 5))
+  
 ---
 Assumptions:
   - set assumptions           # n = symbols('n', integer=True)
