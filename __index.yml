@@ -43,10 +43,10 @@ Complex:
   
 PowerComplex:
   - power complex                                     # exp(z)
-  - expand complex number into its trigonometric form # expand_complex(exp_z)
-  - simplify the expanded complex number              # simplify(expanded_exp_z)
-  - alternate forms                                   # expanded_exp_z.rewrite(exp)
-  - alternate forms                                   # expanded_exp_z.rewrite(exp).factor()
+  - expand complex number into its trigonometric form # expanded_z = expand_complex(exp_z)
+  - simplify the expanded complex number              # simplify(expanded_z)
+  - alternate forms                                   # expanded_z.rewrite(exp)
+  - alternate forms                                   # expanded_z.rewrite(exp).factor()
 
 ---
 Calculus:
