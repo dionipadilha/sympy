@@ -32,6 +32,23 @@ Geometry:
   - area calculation         # region.area
 
 ---
+Complex:
+  - imaginary unity    # I**2 = -1
+  - complex number     # z = a + b*I
+  - real part          # re(z)
+  - imaginary part     # im(z)
+  - absolute value     # Abs(z)
+  - argument (radians) # arg(z)
+  - complex conjugate  # conjugate(z)
+  
+PowerComplex:
+  - power complex                                     # exp(z)
+  - expand complex number into its trigonometric form # expand_complex(exp_z)
+  - simplify the expanded complex number              # simplify(expanded_exp_z)
+  - alternate forms                                   # expanded_exp_z.rewrite(exp)
+  - alternate forms                                   # expanded_exp_z.rewrite(exp).factor()
+
+---
 Calculus:
   Limits:
     - limit of a function    # limit(f(x), x, a)
