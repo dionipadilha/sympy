@@ -1,5 +1,11 @@
 # __index_sympy.yaml
 
+Substitutions:
+  - replaces instances of a symbol # expr.subs(a, b)
+  - evaluate an expr at a point    # expr.subs(x, 0)
+  - replace a subexpression        # (expr).subs(sin(2*x), 2*sin(x)*cos(x))
+  - multiple substitutions         # expr.subs({a: 1, b: 2, c: -3})
+
 SymbolicManipulations:
   - expanding expressions          # expand(factored_expr)
   - factoring expressions          # factor(expanded_expr)
