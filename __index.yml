@@ -124,7 +124,7 @@ Limits:
   - limit of a function    # limit(f(x), x, a)
   - limit at a singularity # limit(sin(x)/x, x, 0)
   - limit at infinity      # limit(f(x), x, oo)
-  - limit at one side only # limit(f(x), x, 0, '-')
+  - one-sided limity       # limit(f(x), x, 0, '-')
 
 Derivatives:
   - derivative of a function # diff(f(x), x)
