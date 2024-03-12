@@ -8,7 +8,7 @@ LambdaFunctions:
 PackedArguments :
   - packed arguments           # args = symbols('a, b')
   - define function            # f = Lambda(args, a + b)
-  - evaluate packed arguments  # f(*args) #--> a + b
+  - evaluate packed arguments  # f(*args) --> a + b
 
 SymbolicWorkflow:
   - Create a symbolic environment  # from sympy import *, init_session()
