@@ -82,8 +82,10 @@ ComparisonOperators:
   - less than                # a < b
   - greater than or equal to # a >= b
   - less than or equal to    # a <= b
-  - equal                    # a == b
-  - not equal                # a != b
+  - structural equality      # a == b
+  - structural not equal     # a != b
+  - symbolic equality        # Eq(a, b)
+  - symbolic not equal       # Ne(a, b)
 
 LogicalExpressions:
   - standard logical operators   # ~ p | p & q
