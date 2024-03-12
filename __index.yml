@@ -10,8 +10,8 @@ SymbolicManipulations:
   - expanding expressions          # expand(factored_expr)
   - factoring expressions          # factor(expanded_expr)
   - cancel common factors          # cancel(expr)
-  - combine fractions              # together(expr)
-  - partial fraction decomposition # apart(combined_expr)
+  - combine fractions              # together(combined_expr)
+  - partial fraction decomposition # apart(together_expr)
   
 LambdaFunctions:
   - define lambda function       # f = Lambda(x, a*x + b)
