@@ -62,11 +62,14 @@ Assumptions:
   - predicates                # x.assumptions0
   
 Constants:
-  - constant pi     # pi
-  - Eulers Number   # E
-  - imaginary unity # I**2 = -1
-  - infinity        # oo
-  - nan             # 
+  - constant pi       # pi
+  - Eulers Number     # E
+  - imaginary unity   # I**2 = -1
+  - infinity          # oo
+  - negative infinity # -oo
+  - complex infinity  # zoo
+  - Not a Number      # nan
+  - golden ratio      # GoldenRatio
 
 ArithmeticOperators:
   - addition           # a + b
