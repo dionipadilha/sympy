@@ -182,3 +182,10 @@ Advanced:
   - inverse Laplace transform    # inverse_laplace_transform(f(s), s, t)
   - Fourier Transform            # FourierTransform(f(x), x, k)
   - inverse Fourier transform    # inverse_fourier_transform(f(k), k, x)
+
+Sequences:
+  - infinite sequence      # sequence(n**2)
+  - range sequence         # sequence(n**2, (n, 1, 11))
+  - get subsequence        # sequence(n**2, (n, 0, oo))[1:n]
+  - extract nth term       # sequence(n**2, (n, 0, oo))[n]
+  - find linear recurrence # seq.find_linear_recurrence(6)
