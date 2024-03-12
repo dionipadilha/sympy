@@ -19,10 +19,11 @@ Assumptions:
   - predicates                # x.assumptions0
   
 Constants:
-  - pi              # pi
-  - Euller          # E
+  - constant pi     # pi
+  - Eulers Number   # E
   - imaginary unity # I**2 = -1
   - infinity        # oo
+  - nan             # 
 
 ArithmeticOperators:
   - addition           # a + b
