@@ -1,5 +1,15 @@
 # __index_sympy.yaml
 
+LambdaFunctions:
+  - define lambda function       # f = Lambda(x, a*x + b)
+  - evaluate function at a point # f(2) --> 2a + b
+  - evaluate a lambda function   # Lambda(x, a*x + b)(2) --> 2a + b
+
+PackedArguments :
+  - packed arguments           # args = symbols('a, b')
+  - define function            # f = Lambda(args, a + b)
+  - evaluate packed arguments  # f(*args) #--> a + b
+
 SymbolicWorkflow:
   - Create a symbolic environment  # from sympy import *, init_session()
   - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
