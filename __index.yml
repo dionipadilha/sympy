@@ -1,11 +1,22 @@
 # __index_sympy.yaml
 
-TrigonometricFunctions:
-  - fundamental # sin, cos, tan
-  - reciprocals # sec, csc, cot
-  - inverse     # asin, acos, atan, atan2, ...
-  - hyperbolic  # sinh, cosh, tanh, ...
-  - 
+SymbolicWorkflow:
+  - Create a symbolic environment  # from sympy import *, init_session()
+  - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
+  - Defining a symbolic expression # expr = a*x**2 + b*x + c
+  - Defining a symbolic function   # f = Lambda(x, expr)
+  - evaluate the symbolic function # f(0)
+  - Defining an symbolic equation  # quadratic_eq = Eq(f(x), 0)
+  - Solving an symbolic equation   # roots_ = solve(quadratic_equation, x)
+  - Find specific solutions        # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
+  - Plotting a symbolic function   # plot(f(x).subs(coeffs), (x, 0, 5))
+
+Assumptions:
+  - set assumptions           # n = symbols('n', integer=True)
+  - assumptions returns       # None, True, False
+  - assumption simplification # sqrt(x**2) --> sqrt(x**2), x, |x|
+  - multiple assumptions      # x = symbols('x', real=True, negative=False)
+  - predicates                # x.assumptions0
   
 Constants:
   - pi              # pi
@@ -65,23 +76,11 @@ Rationals:
   - decimal to fraction # nsimplify(0.25)
   - cientific notation  # 1.23e-3
 
-SymbolicWorkflow:
-  - Create a symbolic environment  # from sympy import *, init_session()
-  - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
-  - Defining a symbolic expression # expr = a*x**2 + b*x + c
-  - Defining a symbolic function   # f = Lambda(x, expr)
-  - evaluate the symbolic function # f(0)
-  - Defining an symbolic equation  # quadratic_eq = Eq(f(x), 0)
-  - Solving an symbolic equation   # roots_ = solve(quadratic_equation, x)
-  - Find specific solutions        # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
-  - Plotting a symbolic function   # plot(f(x).subs(coeffs), (x, 0, 5))
-  
-Assumptions:
-  - set assumptions           # n = symbols('n', integer=True)
-  - assumptions returns       # None, True, False
-  - assumption simplification # sqrt(x**2) --> sqrt(x**2), x, |x|
-  - multiple assumptions      # x = symbols('x', real=True, negative=False)
-  - predicates                # x.assumptions0
+TrigonometricFunctions:
+  - fundamental # sin, cos, tan
+  - reciprocals # sec, csc, cot
+  - inverse     # asin, acos, atan, atan2, ...
+  - hyperbolic  # sinh, cosh, tanh, ...
 
 Geometry:
   - primitive object         # point = Point(0, 1)
