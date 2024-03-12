@@ -5,7 +5,7 @@ LambdaFunctions:
   - evaluate function at a point # f(2) --> 2a + b
   - evaluate a lambda function   # Lambda(x, a*x + b)(2) --> 2a + b
 
-PackedArguments :
+PackedArguments:
   - packed arguments           # args = symbols('a, b')
   - define function            # f = Lambda(args, a + b)
   - evaluate packed arguments  # f(*args) --> a + b
