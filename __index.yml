@@ -1,5 +1,12 @@
 # __index_sympy.yaml
 
+SymbolicManipulations:
+  - expanding expressions          # expand(factored_expr)
+  - factoring expressions          # factor(expanded_expr)
+  - cancel common factors          # cancel(expr)
+  - combine fractions              # together(expr)
+  - partial fraction decomposition # apart(combined_expr)
+  
 LambdaFunctions:
   - define lambda function       # f = Lambda(x, a*x + b)
   - evaluate function at a point # f(2) --> 2a + b
