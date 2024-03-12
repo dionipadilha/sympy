@@ -10,6 +10,25 @@ PackedArguments :
   - define function            # f = Lambda(args, a + b)
   - evaluate packed arguments  # f(*args) --> a + b
 
+Inequalities:
+  - define inequalities # inequality = 3 - x > 2*x + 1
+  - solve inequalities  # solve(inequality, x)
+  
+Intervals:
+  - symbolic interval      # Interval(a, b)
+  - numerical interval     # Interval(0, 1)
+  - right_open interval    # Interval(0, 1, right_open=True)
+  - left-open interval     # Interval(0, 1, left_open=True)
+  - open interval          # Interval.open(0, 1)
+  
+IntervalElements:
+  - start and end points   # A.boundary
+  - interior points        # A.interior
+  - closure of a interval  # A.closure
+  - supremum of a interval # A.sup
+  - infimum of a interval  # A.inf
+  - image of the interval  # imageset(sin, Interval(0, pi))
+  
 SymbolicWorkflow:
   - Create a symbolic environment  # from sympy import *, init_session()
   - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
