@@ -1,5 +1,11 @@
 # __index_sympy.yaml
 
+DiscreteMathematics:
+  - recurrence relation # rsolve(f(n+2)-f(n+1)-f(n), f(n))
+  - specify initial conditions # rsolve(f, y, {f(0): 0, f(1): 1})
+  - summation # Sum(k,(k,1,m))
+  - produt # product(x, (x, 1, k), (k, 1, n))
+
 Substitutions:
   - replaces instances of a symbol # expr.subs(a, b)
   - evaluate an expr at a point    # expr.subs(x, 0)
