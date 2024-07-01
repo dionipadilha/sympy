@@ -1,0 +1,30 @@
+# Sympy/ Intervals
+
+Intervals:
+- symbolic interval  : Interval(a, b)
+- numerical interval : Interval(0, 1)
+- right_open interval: Interval(0, 1, right_open=True)
+- left-open interval : Interval(0, 1, left_open=True)
+- open interval      : Interval.open(0, 1)
+
+Interval Elements:
+  - start and end points   : A.boundary
+  - interior points        : A.interior
+  - closure of a interval  : A.closure
+  - supremum of a interval : A.sup
+  - infimum of a interval  : A.inf
+
+Compound Intervals:
+  - image of the interval: imageset(sin, Interval(0, pi))
+  - union                : A.union(B)
+  - intersection         : A.intersect(B)
+  - symmetric difference : A.symmetric_difference(B)
+  - complement           : A.complement(B)
+
+Interval Checks:
+  - if interval is open           : A.is_open
+  - if a value is in the interval : A.contains(0.5)
+  - if no element in common       : A.is_disjoint(B)
+  - if is a subset                : A.is_subset(B)
+  - if is a superset              : A.is_superset(B)
+  - if is a proper subset         : A.is_proper_subset(B)
