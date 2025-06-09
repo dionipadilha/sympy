@@ -82,18 +82,18 @@ Power Complex:
 # Symbolic
 
 Symbolic Workflow:
-  - Create a symbolic environment  # from sympy import *
-  - Set latex printing             # init_session()
-  - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
-  - Defining a symbolic expression # expr = a*x**2 + b*x + c
-  - Evaluate an expression         # expr.subs({a:1, b:2, c:-3})
-  - Defining a symbolic function   # f = Lambda(x, expr)
-  - Evaluate at a point            # f(x), f(0), f(-1)
-  - Defining an symbolic equation  # quadratic_eq = Eq(f(x), 0)
-  - Solving an symbolic equation   # solutions = solve(quadratic_eq, x)
-  - Set specific coefficients      # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
-  - Find specific solutions        # [sol.subs(coeffs) for sol in solutions]
-  - Plotting a symbolic function   # plot(f(x).subs(coeffs), (x, -7, 5))
+  - create a symbolic environment  # from sympy import *
+  - set latex printing             # init_session()
+  - defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
+  - defining a symbolic expression # expr = a*x**2 + b*x + c
+  - evaluate an expression         # expr.subs({a:1, b:2, c:-3})
+  - defining a symbolic function   # f = Lambda(x, expr)
+  - evaluate at a point            # f(x), f(0), f(-1)
+  - defining an symbolic equation  # quadratic_eq = Eq(f(x), 0)
+  - solving an symbolic equation   # solutions = solve(quadratic_eq, x)
+  - set specific coefficients      # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
+  - find specific solutions        # [sol.subs(coeffs) for sol in solutions]
+  - plotting a symbolic function   # plot(f(x).subs(coeffs), (x, -7, 5))
 
 Assumptions:
   - set assumptions           # n = symbols('n', integer=True)
@@ -121,9 +121,9 @@ Substitutions:
 # Solving Equations & Inequalities
 
 Equation Systems:
-  - Solve Linear Systems     # linsolve([x + y - 2, 2*x + y - 3], (x, y))
-  - Solve Non-Linear Systems # nonlinsolve([x**2 + y**2 - 1, x - y], (x, y))
-  - Solve Systems with solve # solve([x + y - 2, 2*x + y - 3], (x, y))
+  - solve linear systems     # linsolve([x + y - 2, 2*x + y - 3], (x, y))
+  - solve non-linear systems # nonlinsolve([x**2 + y**2 - 1, x - y], (x, y))
+  - solve systems with solve # solve([x + y - 2, 2*x + y - 3], (x, y))
 
 Inequalities:
   - define inequalities # inequality = 3 - x > 2*x + 1
@@ -146,9 +146,25 @@ Derivatives:
 
 Integrals:
   - integral of a function # integrate(f(x), x)
+  - unevaluated integral   # Integral(f(x), x)
   - definite integral      # integrate(f(x), (x, a, b))
-  - double integral        # Integral(f(x), x, x)
   - multiple integrals     # integrate(f(x, y), (x, a, b), (y, c, d))
+
+Sequences:
+  - infinite sequence      # sequence(n**2)
+  - range sequence         # sequence(n**2, (n, 1, 11))
+  - get subsequence        # sequence(n**2, (n, 0, oo))[1:n]
+  - extract nth term       # sequence(n**2, (n, 0, oo))[n]
+  - find linear recurrence # seq.find_linear_recurrence(6)
+
+Advanced:
+  - solve differential equations # dsolve(f(x).diff(x, 2) + 9*f(x), f(x))
+  - Laplace transform            # LaplaceTransform(f(t), t, s)
+  - Laplace transform            # laplace_transform(f(t), t, s)
+  - inverse Laplace transform    # inverse_laplace_transform(f(s), s, t)
+  - Fourier transform            # FourierTransform(f(x), x, k)
+  - Fourier transform            # fourier_transform(f(x), x, k)
+  - inverse Fourier transform    # inverse_fourier_transform(f(k), k, x)
 
 # -------------------------------------------------------------------------
 # Linear Algebra
@@ -164,20 +180,19 @@ Matrix Operations:
   - core functions    # A.det(), A.inv(), A.transpose()
   - eigenvalues       # A.eigenvals()
   - eigenvectors      # A.eigenvects()
-  - solving ls (Ax=b) # A.LUsolve(b)
+  - solving (Ax=b)    # A.LUsolve(b), A.solve(b)
   - vector spaces     # A.nullspace(), A.columnspace()
 
 # -------------------------------------------------------------------------
 # Functions & Plotting
 
 Functions:
-  - Defining a function # f = Lambda(x, expr)
-  - Evaluate at a point # f(x)
+  - defining a function # f = Lambda(x, expr)
+  - evaluate at a point # f(x)
   - replaces symbols    # f(x).subs(coeffs)
 
 Lambda Functions:
   - define lambda function       # f = Lambda(x, a*x + b)
-  - evaluate function at a point # f(2) --> 2a + b
   - evaluate a lambda function   # Lambda(x, a*x + b)(2) --> 2a + b
 
 Packed Arguments:
@@ -185,15 +200,14 @@ Packed Arguments:
   - define function            # f = Lambda(args, a + b)
   - evaluate packed arguments  # f(*args) --> a + b
 
-
 Visualization:
-  - Symbolic function  # plot(f(x).subs(coeffs), (x, 0, 5))
-  - Single function    # plot(x**2, (x, -5, 5))
-  - Multiple functions # plot(sin(x), cos(x), (x, -pi, pi))
-  - Parametric 2D      # plot_parametric(cos(t), sin(t), (t, 0, 2*pi))
-  - 3D surface plots   # plot3d(x*y, (x, -5, 5), (y, -5, 5))
-  - Parametric 3D      # plot3d_parametric_line(cos(t), sin(t), t, (t, -5, 5))
-  - Customizing Plots  # plot(x**2, title='My Plot', xlabel='x', ylabel='f(x)')
+  - symbolic function  # plot(f(x).subs(coeffs), (x, 0, 5))
+  - single function    # plot(x**2, (x, -5, 5))
+  - multiple functions # plot(sin(x), cos(x), (x, -pi, pi))
+  - parametric 2D      # plot_parametric(cos(t), sin(t), (t, 0, 2*pi))
+  - 3d surface plots   # plot3d(x*y, (x, -5, 5), (y, -5, 5))
+  - parametric 3D      # plot3d_parametric_line(cos(t), sin(t), t, (t, -5, 5))
+  - customizing plots  # plot(x**2, title='My Plot', xlabel='x', ylabel='f(x)')
 
 # -------------------------------------------------------------------------
 # Intervals & Sets
@@ -231,24 +245,17 @@ Interval Checks:
 # Specialized Mathematical Domains
 
 Statistics:
-  - Random Variable         # X = Normal('X', mu, sigma)
-  - Calculate Probability   # P(X > mu)
-  - Calculate Expectation   # E(X)
-  - Calculate Variance      # variance(X)
-  - Conditional Probability # P(X > 0, Die('D') > 4)
-
-Sequences:
-  - infinite sequence      # sequence(n**2)
-  - range sequence         # sequence(n**2, (n, 1, 11))
-  - get subsequence        # sequence(n**2, (n, 0, oo))[1:n]
-  - extract nth term       # sequence(n**2, (n, 0, oo))[n]
-  - find linear recurrence # seq.find_linear_recurrence(6)
+  - random variable         # X = Normal('X', mu, sigma)
+  - calculate probability   # P(X > mu)
+  - calculate expectation   # E(X)
+  - calculate variance      # variance(X)
+  - conditional probability # P(X > 0, Die('D') > 4)
 
 Discrete Mathematics:
-  - recurrence relation        # rsolve(f(n+2)-f(n+1)-f(n), f(n))
-  - specify initial conditions # rsolve(f, y, {f(0): 0, f(1): 1})
-  - summation                  # Sum(k,(k,1,m))
-  - produt                     # product(x, (x, 1, k), (k, 1, n))
+  - recurrence relation        # rsolve(f(n+2) - f(n+1) - f(n), f(n))
+  - specify initial conditions # rsolve(f(n+2) - f(n+1) - f(n), f(n), {f(0): 0, f(1): 1})
+  - summation                  # Sum(k,(k, 1, m))
+  - product                    # Product(k, (k, 1, n))
 
 Geometry:
   - primitive object         # point = Point(0, 1)
@@ -272,12 +279,4 @@ Logical Expressions:
   - equivalence relation         # Equivalent(p, q)
   - if-then-else clause          # ITE(x, p, q).subs({x: True})
 
-# -------------------------------------------------------------------------
-# Advanced Mathematics
 
-Advanced:
-  - Solve differential equations # dsolve(f(x).diff(x, 2) + 9*f(x), f(x))
-  - Laplace transform            # LaplaceTransform(f(t), t, s)
-  - Inverse Laplace transform    # inverse_laplace_transform(f(s), s, t)
-  - Fourier Transform            # FourierTransform(f(x), x, k)
-  - Inverse Fourier transform    # inverse_fourier_transform(f(k), k, x)
