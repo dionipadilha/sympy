@@ -1,10 +1,45 @@
 # cheat_sheet.yml
 
-DiscreteMathematics:
-  - recurrence relation # rsolve(f(n+2)-f(n+1)-f(n), f(n))
+Symbolic Workflow:
+  - Create a symbolic environment  # from sympy import *, init_session()
+  - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
+  - Defining a symbolic expression # expr = a*x**2 + b*x + c
+  - Defining a symbolic function   # f = Lambda(x, expr)
+  - Evaluate the symbolic function # f(0)
+  - Defining an symbolic equation  # quadratic_eq = Eq(f(x), 0)
+  - Solving an symbolic equation   # roots_ = solve(quadratic_equation, x)
+  - Find specific solutions        # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
+  - Plotting a symbolic function   # plot(f(x).subs(coeffs), (x, 0, 5))
+
+Equation Systems:
+  - Solve Linear Systems     # linsolve([x + y - 2, 2*x + y - 3], (x, y))
+  - Solve Non-Linear Systems # nonlinsolve([x**2 + y**2 - 1, x - y], (x, y))
+  - Solve Systems with solve # solve([x + y - 2, 2*x + y - 3], (x, y))
+
+Statistics:
+  - Random Variable         # X = Normal('X', mu, sigma)
+  - Calculate Probability   # P(X > mu)
+  - Calculate Expectation   # E(X)
+  - Calculate Variance      # variance(X)
+  - Conditional Probability # P(X > 0, Die('D') > 4)
+
+Linear Algebra:
+  Matrix Creation:
+    - Matrix                 # M = Matrix([[1, 2], [3, 4]])
+    - Identity               # eye(3)
+    - Zero                   # zeros(2, 3)
+    - Diagonal               # diag(1, 2, 3)
+  - Basic Operations         # A + B, A * B, 3 * A
+  - Core Functions           # A.det(), A.inv(), A.transpose()
+  - Eigenvalues/Eigenvectors # A.eigenvals(), A.eigenvects()
+  - Solving Linear Systems   # A.LUsolve(b)
+  - Vector Spaces            # A.nullspace(), A.columnspace()
+
+Discrete Mathematics:
+  - recurrence relation        # rsolve(f(n+2)-f(n+1)-f(n), f(n))
   - specify initial conditions # rsolve(f, y, {f(0): 0, f(1): 1})
-  - summation # Sum(k,(k,1,m))
-  - produt # product(x, (x, 1, k), (k, 1, n))
+  - summation                  # Sum(k,(k,1,m))
+  - produt                     # product(x, (x, 1, k), (k, 1, n))
 
 Substitutions:
   - replaces instances of a symbol # expr.subs(a, b)
@@ -12,19 +47,19 @@ Substitutions:
   - replace a subexpression        # (expr).subs(sin(2*x), 2*sin(x)*cos(x))
   - multiple substitutions         # expr.subs({a: 1, b: 2, c: -3})
 
-SymbolicManipulations:
+Symbolic Manipulations:
   - expanding expressions          # expand(factored_expr)
   - factoring expressions          # factor(expanded_expr)
   - cancel common factors          # cancel(expr)
   - combine fractions              # together(combined_expr)
   - partial fraction decomposition # apart(together_expr)
   
-LambdaFunctions:
+Lambda Functions:
   - define lambda function       # f = Lambda(x, a*x + b)
   - evaluate function at a point # f(2) --> 2a + b
   - evaluate a lambda function   # Lambda(x, a*x + b)(2) --> 2a + b
 
-PackedArguments:
+Packed Arguments:
   - packed arguments           # args = symbols('a, b')
   - define function            # f = Lambda(args, a + b)
   - evaluate packed arguments  # f(*args) --> a + b
@@ -36,42 +71,39 @@ Inequalities:
 Intervals:
   - symbolic interval          # Interval(a, b)
   - numerical interval         # Interval(0, 1)
-  - right_open interval        # Interval(0, 1, right_open=True)
-  - left-open interval         # Interval(0, 1, left_open=True)
   - open interval              # Interval.open(0, 1)
+  - right open interval        # Interval(0, 1, right_open=True)
+  - left open interval         # Interval(0, 1, left_open=True)
   
-CompoundIntervals:
-  - image of the interval  # imageset(sin, Interval(0, pi))
-  - union                # A.union(B)
-  - intersection         # A.intersect(B)
-  - symmetric difference # A.symmetric_difference(B)
-  - complement           # A.complement(B)
+Compound Intervals:
+  - image of the interval # imageset(sin, Interval(0, pi))
+  - union                 # A.union(B)
+  - intersection          # A.intersect(B)
+  - symmetric difference  # A.symmetric_difference(B)
+  - complement            # A.complement(B)
   
-IntervalElements:
+Interval Elements:
   - start and end points   # A.boundary
   - interior points        # A.interior
   - closure of a interval  # A.closure
   - supremum of a interval # A.sup
   - infimum of a interval  # A.inf
 
-IntervalChecks:
+Interval Checks:
   - if interval is open           # A.is_open
   - if a value is in the interval # A.contains(0.5)
   - if no element in common       # A.is_disjoint(B)
   - if is a subset                # A.is_subset(B)
   - if is a superset              # A.is_superset(B)
   - if is a proper subset         # A.is_proper_subset(B)
-  
-SymbolicWorkflow:
-  - Create a symbolic environment  # from sympy import *, init_session()
-  - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
-  - Defining a symbolic expression # expr = a*x**2 + b*x + c
-  - Defining a symbolic function   # f = Lambda(x, expr)
-  - evaluate the symbolic function # f(0)
-  - Defining an symbolic equation  # quadratic_eq = Eq(f(x), 0)
-  - Solving an symbolic equation   # roots_ = solve(quadratic_equation, x)
-  - Find specific solutions        # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
-  - Plotting a symbolic function   # plot(f(x).subs(coeffs), (x, 0, 5))
+
+Plotting:
+  - Symbolic functions  # plot(f(x).subs(coeffs), (x, 0, 5))
+  - Multiple Functions  # plot(sin(x), cos(x), (x, -pi, pi))
+  - 3D Surface Plots    # plot3d(x*y, (x, -5, 5), (y, -5, 5))
+  - Parametric 2D Plots # plot_parametric(cos(t), sin(t), (t, 0, 2*pi))
+  - Parametric 3D Plots # plot3d_parametric_line(cos(t), sin(t), t, (t, -5, 5))
+  - Customizing Plots   # plot(x**2, title='My Plot', xlabel='x', ylabel='f(x)')
 
 Assumptions:
   - set assumptions           # n = symbols('n', integer=True)
@@ -90,7 +122,7 @@ Constants:
   - Not a Number      # nan
   - golden ratio      # GoldenRatio
 
-ArithmeticOperators:
+Arithmetic Operators:
   - addition           # a + b
   - subtraction        # a - b
   - multiplication     # a * b
@@ -99,7 +131,7 @@ ArithmeticOperators:
   - floor division     # quotient = a // b
   - modulos            # remainder = a % b
 
-ComparisonOperators:
+Comparison Operators:
   - greater than             # a > b
   - less than                # a < b
   - greater than or equal to # a >= b
@@ -109,7 +141,7 @@ ComparisonOperators:
   - symbolic equality        # Eq(a, b)
   - symbolic not equal       # Ne(a, b)
 
-LogicalExpressions:
+Logical Expressions:
   - standard logical operators   # ~ p | p & q
   - symbolic boolean expressions # (p | q).subs({p: True, q: False})
   - standard logical notation    # Or(Not(p),And(p, q))
@@ -120,7 +152,7 @@ LogicalExpressions:
   - equivalence relation         # Equivalent(p, q)
   - if-then-else clause          # ITE(x, p, q).subs({x: True})
   
-BasicMathFunctions:
+Basic Math Functions:
   - square              # power(x, 2)
   - cube                # power(x, 3)
   - nth power           # power(x, n)
@@ -144,7 +176,7 @@ Rationals:
   - decimal to fraction # nsimplify(0.25)
   - cientific notation  # 1.23e-3
 
-TrigonometricFunctions:
+Trigonometric Functions:
   - fundamental # sin, cos, tan
   - reciprocals # sec, csc, cot
   - inverse     # asin, acos, atan, atan2, ...
@@ -154,7 +186,7 @@ Geometry:
   - primitive object         # point = Point(0, 1)
   - one-dimensional objects  # line = Line(p1, p2)
   - angle between two lines  # line1.angle_between(line2)
-  - regions:
+  regions:
     - triangle               # Triangle(p1, p2, p3)
     - circle                 # Circle(center, radius)
     - ellipse                # Ellipse(center, hradius, vradius, eccentricity)
@@ -170,7 +202,7 @@ Complex:
   - argument (radians) # arg(z)
   - complex conjugate  # conjugate(z)
   
-PowerComplex:
+Power Complex:
   - power complex                        # exp(z)
   - expand complex trigonometric form    # expanded_z = expand_complex(exp_z)
   - simplify the expanded complex number # simplify(expanded_z)
