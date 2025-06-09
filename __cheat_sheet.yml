@@ -1,4 +1,4 @@
-# __index_sympy.yaml
+# cheat_sheet.yml
 
 DiscreteMathematics:
   - recurrence relation # rsolve(f(n+2)-f(n+1)-f(n), f(n))
