@@ -20,7 +20,7 @@ Basic Math Functions:
   - natural logarithm   # log(x), ln(x)
   - logarithm with base # log(x, b)
   - square root         # sqrt(x)
-  - cube root           # root(x, n)
+  - cube root           # root(x, 3)
   - nth root            # root(x, n)
   - absolute value      # Abs(x)
   
