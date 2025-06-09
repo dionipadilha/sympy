@@ -119,6 +119,8 @@ Substitutions:
 # -------------------------------------------------------------------------
 # Solving Equations & Inequalities
 
+# The specialized solvers are often more efficient and return data in a more predictable format.
+
 Equation Systems:
   - solve linear systems     # linsolve([x + y - 2, 2*x + y - 3], (x, y))
   - solve non-linear systems # nonlinsolve([x**2 + y**2 - 1, x - y], (x, y))
