@@ -79,7 +79,7 @@ Power Complex:
   - alternate forms                      # expanded_z.rewrite(exp).factor()
   
 # -------------------------------------------------------------------------
-# Symbolic
+# Symbolic Math
 
 Symbolic Workflow:
   - create a symbolic environment  # from sympy import *
@@ -115,7 +115,6 @@ Substitutions:
   - evaluate an expr at a point    # expr.subs(x, 0)
   - replace a subexpression        # (expr).subs(sin(2*x), 2*sin(x)*cos(x))
   - multiple substitutions         # expr.subs({a: 1, b: 2, c: -3})
-  
 
 # -------------------------------------------------------------------------
 # Solving Equations & Inequalities
@@ -128,7 +127,23 @@ Equation Systems:
 Inequalities:
   - define inequalities # inequality = 3 - x > 2*x + 1
   - solve inequalities  # solve(inequality, x)
+  
+# -------------------------------------------------------------------------
+# Linear Algebra
 
+Matrix Creation:
+  - matrix   # M = Matrix([[1, 2], [3, 4]])
+  - identity # eye(3)
+  - zero     # zeros(2, 3)
+  - diagonal # diag(1, 2, 3)
+
+Matrix Operations:
+  - basic operations  # A + B, A * B, 3 * A
+  - core functions    # A.det(), A.inv(), A.transpose()
+  - eigenvalues       # A.eigenvals()
+  - eigenvectors      # A.eigenvects()
+  - solving (Ax=b)    # A.LUsolve(b), A.solve(b)
+  - vector spaces     # A.nullspace(), A.columnspace()
 # -------------------------------------------------------------------------
 # Calculus
 
@@ -165,23 +180,6 @@ Advanced:
   - Fourier transform            # FourierTransform(f(x), x, k)
   - Fourier transform            # fourier_transform(f(x), x, k)
   - inverse Fourier transform    # inverse_fourier_transform(f(k), k, x)
-
-# -------------------------------------------------------------------------
-# Linear Algebra
-
-Matrix Creation:
-  - matrix   # M = Matrix([[1, 2], [3, 4]])
-  - identity # eye(3)
-  - zero     # zeros(2, 3)
-  - diagonal # diag(1, 2, 3)
-
-Matrix Operations:
-  - basic operations  # A + B, A * B, 3 * A
-  - core functions    # A.det(), A.inv(), A.transpose()
-  - eigenvalues       # A.eigenvals()
-  - eigenvectors      # A.eigenvects()
-  - solving (Ax=b)    # A.LUsolve(b), A.solve(b)
-  - vector spaces     # A.nullspace(), A.columnspace()
 
 # -------------------------------------------------------------------------
 # Functions & Plotting
