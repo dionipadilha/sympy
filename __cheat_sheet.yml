@@ -1,128 +1,9 @@
-# cheat_sheet.yml
+# SymPy Cheat Sheet
 
-Symbolic Workflow:
-  - Create a symbolic environment  # from sympy import *, init_session()
-  - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
-  - Defining a symbolic expression # expr = a*x**2 + b*x + c
-  - Defining a symbolic function   # f = Lambda(x, expr)
-  - Evaluate the symbolic function # f(0)
-  - Defining an symbolic equation  # quadratic_eq = Eq(f(x), 0)
-  - Solving an symbolic equation   # roots_ = solve(quadratic_equation, x)
-  - Find specific solutions        # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
-  - Plotting a symbolic function   # plot(f(x).subs(coeffs), (x, 0, 5))
+# -------------------------------------------------------------------------
+# Basic Math
 
-Equation Systems:
-  - Solve Linear Systems     # linsolve([x + y - 2, 2*x + y - 3], (x, y))
-  - Solve Non-Linear Systems # nonlinsolve([x**2 + y**2 - 1, x - y], (x, y))
-  - Solve Systems with solve # solve([x + y - 2, 2*x + y - 3], (x, y))
-
-Statistics:
-  - Random Variable         # X = Normal('X', mu, sigma)
-  - Calculate Probability   # P(X > mu)
-  - Calculate Expectation   # E(X)
-  - Calculate Variance      # variance(X)
-  - Conditional Probability # P(X > 0, Die('D') > 4)
-
-Linear Algebra:
-  Matrix Creation:
-    - Matrix                 # M = Matrix([[1, 2], [3, 4]])
-    - Identity               # eye(3)
-    - Zero                   # zeros(2, 3)
-    - Diagonal               # diag(1, 2, 3)
-  - Basic Operations         # A + B, A * B, 3 * A
-  - Core Functions           # A.det(), A.inv(), A.transpose()
-  - Eigenvalues/Eigenvectors # A.eigenvals(), A.eigenvects()
-  - Solving Linear Systems   # A.LUsolve(b)
-  - Vector Spaces            # A.nullspace(), A.columnspace()
-
-Discrete Mathematics:
-  - recurrence relation        # rsolve(f(n+2)-f(n+1)-f(n), f(n))
-  - specify initial conditions # rsolve(f, y, {f(0): 0, f(1): 1})
-  - summation                  # Sum(k,(k,1,m))
-  - produt                     # product(x, (x, 1, k), (k, 1, n))
-
-Substitutions:
-  - replaces instances of a symbol # expr.subs(a, b)
-  - evaluate an expr at a point    # expr.subs(x, 0)
-  - replace a subexpression        # (expr).subs(sin(2*x), 2*sin(x)*cos(x))
-  - multiple substitutions         # expr.subs({a: 1, b: 2, c: -3})
-
-Symbolic Manipulations:
-  - expanding expressions          # expand(factored_expr)
-  - factoring expressions          # factor(expanded_expr)
-  - cancel common factors          # cancel(expr)
-  - combine fractions              # together(combined_expr)
-  - partial fraction decomposition # apart(together_expr)
-  
-Lambda Functions:
-  - define lambda function       # f = Lambda(x, a*x + b)
-  - evaluate function at a point # f(2) --> 2a + b
-  - evaluate a lambda function   # Lambda(x, a*x + b)(2) --> 2a + b
-
-Packed Arguments:
-  - packed arguments           # args = symbols('a, b')
-  - define function            # f = Lambda(args, a + b)
-  - evaluate packed arguments  # f(*args) --> a + b
-
-Inequalities:
-  - define inequalities # inequality = 3 - x > 2*x + 1
-  - solve inequalities  # solve(inequality, x)
-  
-Intervals:
-  - symbolic interval          # Interval(a, b)
-  - numerical interval         # Interval(0, 1)
-  - open interval              # Interval.open(0, 1)
-  - right open interval        # Interval(0, 1, right_open=True)
-  - left open interval         # Interval(0, 1, left_open=True)
-  
-Compound Intervals:
-  - image of the interval # imageset(sin, Interval(0, pi))
-  - union                 # A.union(B)
-  - intersection          # A.intersect(B)
-  - symmetric difference  # A.symmetric_difference(B)
-  - complement            # A.complement(B)
-  
-Interval Elements:
-  - start and end points   # A.boundary
-  - interior points        # A.interior
-  - closure of a interval  # A.closure
-  - supremum of a interval # A.sup
-  - infimum of a interval  # A.inf
-
-Interval Checks:
-  - if interval is open           # A.is_open
-  - if a value is in the interval # A.contains(0.5)
-  - if no element in common       # A.is_disjoint(B)
-  - if is a subset                # A.is_subset(B)
-  - if is a superset              # A.is_superset(B)
-  - if is a proper subset         # A.is_proper_subset(B)
-
-Plotting:
-  - Symbolic functions  # plot(f(x).subs(coeffs), (x, 0, 5))
-  - Multiple Functions  # plot(sin(x), cos(x), (x, -pi, pi))
-  - 3D Surface Plots    # plot3d(x*y, (x, -5, 5), (y, -5, 5))
-  - Parametric 2D Plots # plot_parametric(cos(t), sin(t), (t, 0, 2*pi))
-  - Parametric 3D Plots # plot3d_parametric_line(cos(t), sin(t), t, (t, -5, 5))
-  - Customizing Plots   # plot(x**2, title='My Plot', xlabel='x', ylabel='f(x)')
-
-Assumptions:
-  - set assumptions           # n = symbols('n', integer=True)
-  - assumptions returns       # None, True, False
-  - assumption simplification # sqrt(x**2) --> sqrt(x**2), x, |x|
-  - multiple assumptions      # x = symbols('x', real=True, negative=False)
-  - predicates                # x.assumptions0
-  
-Constants:
-  - constant pi       # pi
-  - Eulers Number     # E
-  - imaginary unity   # I**2 = -1
-  - infinity          # oo
-  - negative infinity # -oo
-  - complex infinity  # zoo
-  - Not a Number      # nan
-  - golden ratio      # GoldenRatio
-
-Arithmetic Operators:
+Arithmetic:
   - addition           # a + b
   - subtraction        # a - b
   - multiplication     # a * b
@@ -131,27 +12,6 @@ Arithmetic Operators:
   - floor division     # quotient = a // b
   - modulos            # remainder = a % b
 
-Comparison Operators:
-  - greater than             # a > b
-  - less than                # a < b
-  - greater than or equal to # a >= b
-  - less than or equal to    # a <= b
-  - structural equality      # a == b
-  - structural not equal     # a != b
-  - symbolic equality        # Eq(a, b)
-  - symbolic not equal       # Ne(a, b)
-
-Logical Expressions:
-  - standard logical operators   # ~ p | p & q
-  - symbolic boolean expressions # (p | q).subs({p: True, q: False})
-  - standard logical notation    # Or(Not(p),And(p, q))
-  - not logical operators        # Not(p), Nor(p, q), Nand(p, q)
-  - exclusive relation           # Exclusive(p, q, x)
-  - exclusive logical operators  # Xor(p, q), Xnor(p, q)
-  - implies relation             # (p >> q)
-  - equivalence relation         # Equivalent(p, q)
-  - if-then-else clause          # ITE(x, p, q).subs({x: True})
-  
 Basic Math Functions:
   - square              # power(x, 2)
   - cube                # power(x, 3)
@@ -164,7 +24,30 @@ Basic Math Functions:
   - nth root            # root(x, n)
   - absolute value      # Abs(x)
   
-Rationals:
+Comparison Operators:
+  - greater than             # a > b
+  - less than                # a < b
+  - greater than or equal to # a >= b
+  - less than or equal to    # a <= b
+  - structural equality      # a == b
+  - structural not equal     # a != b
+  - symbolic equality        # Eq(a, b)
+  - symbolic not equal       # Ne(a, b)
+
+Constants:
+  - pi       # pi
+  - eulers number     # E
+  - imaginary unity   # I**2 = -1
+  - infinity          # oo
+  - negative infinity # -oo
+  - complex infinity  # zoo
+  - not a number      # nan
+  - golden ratio      # GoldenRatio
+
+# -------------------------------------------------------------------------
+# Rationals
+
+  Rationals:
   - rational object     # Rational(a, b)
   - rational object     # frac = S(a)/b + S(c)/d
   - combines terms      # together(frac)
@@ -176,22 +59,8 @@ Rationals:
   - decimal to fraction # nsimplify(0.25)
   - cientific notation  # 1.23e-3
 
-Trigonometric Functions:
-  - fundamental # sin, cos, tan
-  - reciprocals # sec, csc, cot
-  - inverse     # asin, acos, atan, atan2, ...
-  - hyperbolic  # sinh, cosh, tanh, ...
-
-Geometry:
-  - primitive object         # point = Point(0, 1)
-  - one-dimensional objects  # line = Line(p1, p2)
-  - angle between two lines  # line1.angle_between(line2)
-  regions:
-    - triangle               # Triangle(p1, p2, p3)
-    - circle                 # Circle(center, radius)
-    - ellipse                # Ellipse(center, hradius, vradius, eccentricity)
-    - square                 # RegularPolygon(p, 1, 4)
-  - area calculation         # region.area
+# -------------------------------------------------------------------------
+# Complex
 
 Complex:
   - imaginary unity    # I**2 = -1
@@ -201,13 +70,65 @@ Complex:
   - absolute value     # Abs(z)
   - argument (radians) # arg(z)
   - complex conjugate  # conjugate(z)
-  
+
 Power Complex:
   - power complex                        # exp(z)
   - expand complex trigonometric form    # expanded_z = expand_complex(exp_z)
   - simplify the expanded complex number # simplify(expanded_z)
   - alternate forms                      # expanded_z.rewrite(exp)
   - alternate forms                      # expanded_z.rewrite(exp).factor()
+  
+# -------------------------------------------------------------------------
+# Symbolic
+
+Symbolic Workflow:
+  - Create a symbolic environment  # from sympy import *, init_session()
+  - Defining a symbolic variables  # x, a, b, c = symbols('x, a, b, c')
+  - Defining a symbolic expression # expr = a*x**2 + b*x + c
+  - Evaluate an expression         # expr.subs({a:1, b:-2, x:5})
+  - Defining a symbolic function   # f = Lambda(x, expr)
+  - Evaluate at a point            # f(x)
+  - Defining an symbolic equation  # quadratic_eq = Eq(f(x), 0)
+  - Solving an symbolic equation   # roots_ = solve(quadratic_equation, x)
+  - Find specific solutions        # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
+  - Plotting a symbolic function   # plot(f(x).subs(coeffs), (x, 0, 5))
+
+Assumptions:
+  - set assumptions           # n = symbols('n', integer=True)
+  - assumptions returns       # None, True, False
+  - assumption simplification # sqrt(x**2) --> sqrt(x**2), x, |x|
+  - multiple assumptions      # x = symbols('x', real=True, negative=False)
+  - predicates                # x.assumptions0
+  - Check assumptions         # x.is_positive
+
+Symbolic Manipulations:
+  - expanding expressions          # expand(factored_expr)
+  - factoring expressions          # factor(expanded_expr)
+  - cancel common factors          # cancel(expr)
+  - combine fractions              # together(combined_expr)
+  - partial fraction decomposition # apart(together_expr)
+  
+Substitutions:
+  - replaces instances of a symbol # expr.subs(a, b)
+  - evaluate an expr at a point    # expr.subs(x, 0)
+  - replace a subexpression        # (expr).subs(sin(2*x), 2*sin(x)*cos(x))
+  - multiple substitutions         # expr.subs({a: 1, b: 2, c: -3})
+  
+
+# -------------------------------------------------------------------------
+# Solving Equations & Inequalities
+
+Equation Systems:
+  - Solve Linear Systems     # linsolve([x + y - 2, 2*x + y - 3], (x, y))
+  - Solve Non-Linear Systems # nonlinsolve([x**2 + y**2 - 1, x - y], (x, y))
+  - Solve Systems with solve # solve([x + y - 2, 2*x + y - 3], (x, y))
+
+Inequalities:
+  - define inequalities # inequality = 3 - x > 2*x + 1
+  - solve inequalities  # solve(inequality, x)
+
+# -------------------------------------------------------------------------
+# Calculus
 
 Limits:
   - limit of a function    # limit(f(x), x, a)
@@ -227,12 +148,92 @@ Integrals:
   - double integral        # Integral(f(x), x, x)
   - multiple integrals     # integrate(f(x, y), (x, a, b), (y, c, d))
 
-Advanced:
-  - solve differential equations # dsolve(f(x).diff(x, 2) + 9*f(x), f(x))
-  - Laplace transform            # LaplaceTransform(f(t), t, s)
-  - inverse Laplace transform    # inverse_laplace_transform(f(s), s, t)
-  - Fourier Transform            # FourierTransform(f(x), x, k)
-  - inverse Fourier transform    # inverse_fourier_transform(f(k), k, x)
+# -------------------------------------------------------------------------
+# Linear Algebra
+
+Matrix Creation:
+  - matrix   # M = Matrix([[1, 2], [3, 4]])
+  - identity # eye(3)
+  - zero     # zeros(2, 3)
+  - diagonal # diag(1, 2, 3)
+
+Matrix Operations:
+  - basic operations  # A + B, A * B, 3 * A
+  - core functions    # A.det(), A.inv(), A.transpose()
+  - eigenvalues       # A.eigenvals()
+  - eigenvectors      # A.eigenvects()
+  - solving ls (Ax=b) # A.LUsolve(b)
+  - vector spaces     # A.nullspace(), A.columnspace()
+
+# -------------------------------------------------------------------------
+# Functions & Plotting
+
+Functions:
+  - Defining a function # f = Lambda(x, expr)
+  - Evaluate at a point # f(x)
+  - replaces symbols    # f(x).subs(coeffs)
+
+Lambda Functions:
+  - define lambda function       # f = Lambda(x, a*x + b)
+  - evaluate function at a point # f(2) --> 2a + b
+  - evaluate a lambda function   # Lambda(x, a*x + b)(2) --> 2a + b
+
+Packed Arguments:
+  - packed arguments           # args = symbols('a, b')
+  - define function            # f = Lambda(args, a + b)
+  - evaluate packed arguments  # f(*args) --> a + b
+
+
+Visualization:
+  - Symbolic function  # plot(f(x).subs(coeffs), (x, 0, 5))
+  - Single function    # plot(x**2, (x, -5, 5))
+  - Multiple functions # plot(sin(x), cos(x), (x, -pi, pi))
+  - Parametric 2D      # plot_parametric(cos(t), sin(t), (t, 0, 2*pi))
+  - 3D surface plots   # plot3d(x*y, (x, -5, 5), (y, -5, 5))
+  - Parametric 3D      # plot3d_parametric_line(cos(t), sin(t), t, (t, -5, 5))
+  - Customizing Plots  # plot(x**2, title='My Plot', xlabel='x', ylabel='f(x)')
+
+# -------------------------------------------------------------------------
+# Intervals & Sets
+
+Creation:
+  - symbolic interval   # Interval(a, b)
+  - numerical interval  # Interval(0, 1)
+  - open interval       # Interval.open(0, 1)
+  - right open interval # Interval(0, 1, right_open=True)
+  - left open interval  # Interval(0, 1, left_open=True)
+  
+Compound Intervals:
+  - image of the interval # imageset(sin, Interval(0, pi))
+  - union                 # A.union(B)
+  - intersection          # A.intersect(B)
+  - symmetric difference  # A.symmetric_difference(B)
+  - complement            # A.complement(B)
+  
+Interval Elements:
+  - start and end points   # A.boundary
+  - interior points        # A.interior
+  - closure of a interval  # A.closure
+  - supremum of a interval # A.sup
+  - infimum of a interval  # A.inf
+
+Interval Checks:
+  - Check for openness    # A.is_open
+  - Check for containment # A.contains(0.5)
+  - if no element in common       # A.is_disjoint(B)
+  - if is a subset                # A.is_subset(B)
+  - if is a superset              # A.is_superset(B)
+  - if is a proper subset         # A.is_proper_subset(B)
+
+# -------------------------------------------------------------------------
+# Specialized Mathematical Domains
+
+Statistics:
+  - Random Variable         # X = Normal('X', mu, sigma)
+  - Calculate Probability   # P(X > mu)
+  - Calculate Expectation   # E(X)
+  - Calculate Variance      # variance(X)
+  - Conditional Probability # P(X > 0, Die('D') > 4)
 
 Sequences:
   - infinite sequence      # sequence(n**2)
@@ -240,3 +241,58 @@ Sequences:
   - get subsequence        # sequence(n**2, (n, 0, oo))[1:n]
   - extract nth term       # sequence(n**2, (n, 0, oo))[n]
   - find linear recurrence # seq.find_linear_recurrence(6)
+
+Discrete Mathematics:
+  - recurrence relation        # rsolve(f(n+2)-f(n+1)-f(n), f(n))
+  - specify initial conditions # rsolve(f, y, {f(0): 0, f(1): 1})
+  - summation                  # Sum(k,(k,1,m))
+  - produt                     # product(x, (x, 1, k), (k, 1, n))
+
+Geometry:
+  - primitive object         # point = Point(0, 1)
+  - one-dimensional objects  # line = Line(p1, p2)
+  - angle between two lines  # line1.angle_between(line2)
+  regions:
+    - triangle               # Triangle(p1, p2, p3)
+    - circle                 # Circle(center, radius)
+    - ellipse                # Ellipse(center, hradius, vradius, eccentricity)
+    - square                 # RegularPolygon(p, 1, 4)
+  - area calculation         # region.area
+
+Logical Expressions:
+  - standard logical operators   # ~ p | p & q
+  - symbolic boolean expressions # (p | q).subs({p: True, q: False})
+  - standard logical notation    # Or(Not(p),And(p, q))
+  - not logical operators        # Not(p), Nor(p, q), Nand(p, q)
+  - exclusive relation           # Exclusive(p, q, x)
+  - exclusive logical operators  # Xor(p, q), Xnor(p, q)
+  - implies relation             # (p >> q)
+  - equivalence relation         # Equivalent(p, q)
+  - if-then-else clause          # ITE(x, p, q).subs({x: True})
+
+# -------------------------------------------------------------------------
+# Advanced Mathematics
+
+Advanced:
+  - Solve differential equations # dsolve(f(x).diff(x, 2) + 9*f(x), f(x))
+  - Laplace transform            # LaplaceTransform(f(t), t, s)
+  - Inverse Laplace transform    # inverse_laplace_transform(f(s), s, t)
+  - Fourier Transform            # FourierTransform(f(x), x, k)
+  - Inverse Fourier transform    # inverse_fourier_transform(f(k), k, x)
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
