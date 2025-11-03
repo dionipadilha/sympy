@@ -110,7 +110,7 @@ Symbolic Environment:
 
   Interactive Use:
   - import complete sympy lib # from sympy import *
-  - import complete sympy lib # from sympy import * as sp
+  - import complete sympy lib # import sympy as sp
   - set sympy session         # init_session()
   
   in scripts:
