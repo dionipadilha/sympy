@@ -274,6 +274,81 @@ Propriedades:
   - subconjunto próprio     # A.is_proper_subset(B)
 
 # -------------------------------------------------------------------------
+# Sequências e Séries Discretas
+
+# SymPy tem suporte simbólico a sequências e séries por meio do módulo:
+#   from sympy.series.sequences import Sequence, SeqFormula, RecursiveSeq, SeqPer
+
+# 1. Definição de Sequências
+
+# Sequência genérica:
+#   SeqFormula(expr, variable, start, stop=None)
+
+# Exemplo: sequência (n^2) para n = 1, 2, 3, ...
+  seq = SeqFormula(n**2, (n, 1, oo))
+
+# Sequência recursiva (definida por recorrência):
+  rec = RecursiveSeq(x(n-1) + x(n-2), x(n), n, [0, 1])  # Fibonacci-like
+
+# Sequência periódica (útil para padrões repetitivos):
+  periodic = SeqPer([1, 2, 3], n)
+
+# 2. Acesso e manipulação
+
+  seq.term(5)        # retorna o 5º termo (substitui n = 5)
+  seq.coeff(n, 2)    # retorna o 2º coeficiente se for série polinomial
+  seq[:10]           # primeiros 10 termos (gera lista simbólica)
+  list(seq[:10])     # converte para lista Python
+  rec[:8]            # primeiros 8 termos da sequência recursiva
+
+# 3. Avaliação e simplificação
+
+  seq.limit         # limite simbólico da sequência quando n → ∞
+  seq.diff(n)       # diferença entre termos consecutivos
+  seq.simplify()    # simplifica a expressão dos termos
+
+# 4. Conversão em série
+
+  seq.to_series(x)  # gera série formal em x (como somatório)
+  seq.sum()         # somatório (Série parcial)
+  seq.summation(n)  # equivalente a Sum(seq[n], (n, ...))
+
+# 5. Exemplo prático: Sequência e limite
+
+  seq = SeqFormula(1/n, (n, 1, oo))
+  seq.term(5)        # 1/5
+  seq.limit          # 0
+  seq.sum(1, oo)     # diverge (harmônica)
+  seq.simplify()     # retorna 1/n
+  seq.to_series(x)   # converte para série formal 1/x + 1/x^2 + ...
+
+# 6. Comparação entre tipos de sequência
+
+| Tipo de sequência | Classe SymPy      | Exemplo básico                 | Uso típico                       |
+|-------------------|------------------|--------------------------------|----------------------------------|
+| Explícita         | SeqFormula       | n**2                           | Definições diretas               |
+| Recursiva         | RecursiveSeq     | a(n) = a(n-1) + a(n-2)         | Recorrências                     |
+| Periódica         | SeqPer           | [1, 2, 3, 1, 2, 3, ...]        | Padrões repetitivos              |
+
+# 7. Integração com somatórios e recorrências
+
+  from sympy import Sum, rsolve
+
+  # somatório de sequência explícita
+  Sum(seq.formula, (n, 1, m)).doit()
+
+  # resolução de recorrência associada
+  rsolve(a(n+1) - 2*a(n), a(n))    # retorna C*2**n
+
+# 8. Dicas e notas práticas
+
+  - `SeqFormula` aceita expressões simbólicas complexas (ex: sin(n*pi/3))
+  - `RecursiveSeq` exige condições iniciais explícitas (lista ou dicionário)
+  - `SeqPer` é ideal para gerar funções periódicas simbólicas
+  - `to_series()` pode ser convertido para série formal com `O(x**n)`
+  - `limit_seq(seq.formula, n)` é alternativa útil a `seq.limit`
+
+# -------------------------------------------------------------------------
 # Domínios Matemáticos Especializados
 
 Estatística:
