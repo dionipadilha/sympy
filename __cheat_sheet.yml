@@ -1,323 +1,311 @@
-# SymPy Cheat Sheet
+# SymPy Cheat Sheet (versão revisada e corrigida)
 
 # -------------------------------------------------------------------------
-# Core Concepts: The "Why" Behind SymPy
+# Core Concepts: O "porquê" por trás do SymPy
 
-# Understand these to avoid common errors.
+# Entenda estes conceitos para evitar erros comuns.
 
-# 1. Symbolic Expressions vs. Python Numbers
-# Python's `1/2` becomes `0.5`. For an exact fraction, use SymPy objects.
-# Use sympify() or S() to create them: `S(1)/2` stays as 1/2.
+# 1. Expressões simbólicas vs. números do Python
+# Em Python, `1/2` se torna `0.5`. Para frações exatas, use objetos SymPy.
+# Use sympify() ou S() para criá-los: `S(1)/2` permanece como 1/2 (Rational).
 
-# 2. Symbolic Equality (Eq) vs. Structural Equality (==)
-# Eq(x, 5): Represents the mathematical equation "x = 5". Use this for solvers.
-# x == 5: Asks "Is the expression x identical to 5?". Returns Python's True/False.
+# 2. Igualdade simbólica (Eq) vs. igualdade estrutural (==)
+# Eq(x, 5): representa a equação matemática "x = 5" (objeto manipulável).
+# x == 5: pergunta se o objeto x é estruturalmente idêntico a 5 (True/False).
 
-# 3. Unevaluated (Capitalized) vs. Evaluated (lowercase)
-# Integral(f(x), x): Creates an unevaluated object to display or manipulate.
-# integrate(f(x), x): Attempts to perform the calculation and return a result.
+# 3. Objetos não avaliados (com inicial maiúscula) vs. avaliados (minúscula)
+# Integral(f(x), x): cria um objeto não avaliado (útil para manipular ou exibir).
+# integrate(f(x), x): tenta calcular o resultado e retorna o valor.
 
-# 4. Assumptions are Powerful
-# Without assumptions, sqrt(x**2) cannot simplify because x could be complex.
-# With `x = symbols('x', real=True)`, it simplifies to `Abs(x)`.
+# 4. Assunções são poderosas
+# Sem assunções, sqrt(x**2) não pode simplificar pois x pode ser complexo.
+# Com `x = symbols('x', real=True)` simplifica para `Abs(x)`.
+# Com `x = symbols('x', positive=True)` simplifica para `x`.
 
-# 5. Imports for Specialized Domains
-# Functions for stats, geometry, etc., are in submodules.
-# Example: `from sympy.stats import Normal, P, E`
-
-# -------------------------------------------------------------------------
-# Basic Math
-
-Arithmetic:
-  - addition           # a + b
-  - subtraction        # a - b
-  - multiplication     # a * b
-  - raising to a power # a ** b
-  - division           # a / b
-  - floor division     # quotient = a // b
-  - modulos            # remainder = a % b
-
-Basic Math Functions:
-  - square                     # power(x, 2)
-  - cube                       # power(x, 3)
-  - nth power                  # power(x, n)
-  - exponential                # exp(x)
-  - natural logarithm          # log(x), ln(x)
-  - logarithm with base        # log(x, b)
-  - square root                # sqrt(x)
-  - cube root                  # root(x, 3)
-  - nth root                   # root(x, n)
-  - unevaluated absolute value # Abs(x)
-
-Comparison Operators:
-  - greater than             # a > b
-  - less than                # a < b
-  - greater than or equal to # a >= b
-  - less than or equal to    # a <= b
-  - structural not equal     # a != b
-  - structural equality      # a == b
-  - symbolic equation        # Eq(a, b)
-  - symbolic not equation    # Ne(a, b)
-
-Constants:
-  - pi       # pi
-  - eulers number     # E
-  - imaginary unity   # I**2 = -1
-  - infinity          # oo
-  - negative infinity # -oo
-  - complex infinity  # zoo
-  - not a number      # nan
-  - golden ratio      # GoldenRatio
+# 5. Submódulos especializados
+# Funções para estatística, geometria, etc., estão em submódulos.
+# Exemplo: `from sympy.stats import Normal, P, E`
 
 # -------------------------------------------------------------------------
-# Rationals
+# Operações básicas
 
-  Rationals:
-  - symbolic rational   # Rational(a, b)
-  - symbolic rational   # frac = sympify(a)/b + S(c)/d
-  - combines terms      # together(frac)
-  - expand terms        # expand(frac)
-  - pull the term out   # apart(frac)
-  - cancel the terms    # cancel(frac)
-  - decimal notation    # N(frac, precission)
-  - decimal notation    # (frac).evalf(precision)
-  - decimal to fraction # nsimplify(0.25)
-  - scientific notation # 1.23e-3
+Aritmética:
+  - adição             # a + b
+  - subtração          # a - b
+  - multiplicação      # a * b
+  - potenciação        # a ** b
+  - divisão            # a / b
+  - divisão inteira    # a // b
+  - resto (módulo)     # a % b
 
-# -------------------------------------------------------------------------
-# Complex
+Funções matemáticas básicas:
+  - quadrado                     # power(x, 2)
+  - cubo                         # power(x, 3)
+  - potência n-ésima             # power(x, n)
+  - exponencial                  # exp(x)
+  - logaritmo natural            # log(x)
+  - logaritmo base b             # log(x, b)
+  - raiz quadrada                # sqrt(x)
+  - raiz cúbica                  # root(x, 3)
+  - raiz n-ésima                 # root(x, n)
+  - valor absoluto simbólico     # Abs(x)
 
-Complex:
-  - imaginary unity    # I**2 = -1
-  - complex number     # z = a + b*I
-  - real part          # re(z)
-  - imaginary part     # im(z)
-  - absolute value     # Abs(z)
-  - argument (radians) # arg(z)
-  - complex conjugate  # conjugate(z)
+Operadores de comparação:
+  - maior que                 # a > b
+  - menor que                 # a < b
+  - maior ou igual            # a >= b
+  - menor ou igual            # a <= b
+  - diferente (estrutural)    # a != b
+  - igual (estrutural)        # a == b
+  - equação simbólica         # Eq(a, b)
+  - desigualdade simbólica    # Ne(a, b)
 
-Power Complex:
-  - power complex                        # exp(z)
-  - expand complex trigonometric form    # expanded_z = expand_complex(exp_z)
-  - simplify the expanded complex number # simplify(expanded_z)
-  - alternate forms                      # expanded_z.rewrite(exp)
-  - alternate forms                      # expanded_z.rewrite(exp).factor()
-  
-# -------------------------------------------------------------------------
-# Symbolic Math
-
-Symbolic Environment:
-
-  Interactive Use:
-  - import complete sympy lib # from sympy import *
-  - import complete sympy lib # import sympy as sp
-  - set sympy session         # init_session()
-  
-  in scripts:
-    - prefer specific imports # from sympy import specific_functions
-    - set sympy LaTex printing            # init_printing()
-    
-  Defining symbols:
-    - symbolic reals     # x, a, b, c = symbols('x, a, b, c')
-    - symbolic integers  # k, m, n    = symbols('k m n', integer=True)
-    - symbolic functions # f, g, h    = symbols('f g h', cls=Function)
-
-Basic Symbolic Workflow:
-  - set symbolic environment:      # imports, inits, symbols
-  - defining a symbolic expression # expr = a*x**2 + b*x + c
-  - evaluate an expression         # expr.subs({a:1, b:2, c:-3})
-  - defining a symbolic function   # f = Lambda(x, expr)
-  - evaluate at a point            # f(x), f(0), f(-1)
-  - defining an symbolic equation  # quadratic_eq = Eq(f(x), 0)
-  - solving an symbolic equation   # solutions = solve(quadratic_eq, x)
-  - set specific coefficients      # coeffs = {a:1, b:-5, c:6}; roots_.subs(coeffs)
-  - find specific solutions        # [sol.subs(coeffs) for sol in solutions]
-  - plotting a symbolic function   # plot(f(x).subs(coeffs), (x, -7, 5))
-
-Assumptions:
-  - set assumptions           # n = symbols('n', integer=True)
-  - assumptions returns       # None, True, False
-  - assumption simplification # sqrt(x**2) --> sqrt(x**2), x, |x|
-  - multiple assumptions      # x = symbols('x', real=True, negative=False)
-  - predicates                # x.assumptions0
-  - Check assumptions         # x.is_positive
-
-Symbolic Manipulations:
-  - expanding expressions          # expand(factored_expr)
-  - factoring expressions          # factor(expanded_expr)
-  - cancel common factors          # cancel(expr)
-  - combine fractions              # together(combined_expr)
-  - partial fraction decomposition # apart(together_expr)
-  
-Substitutions:
-  - replaces instances of a symbol # expr.subs(a, b)
-  - evaluate an expr at a point    # expr.subs(x, 0)
-  - replace a subexpression        # (expr).subs(sin(2*x), 2*sin(x)*cos(x))
-  - multiple substitutions         # expr.subs({a: 1, b: 2, c: -3})
+Constantes:
+  - pi                  # pi
+  - número de Euler     # E
+  - unidade imaginária  # I**2 = -1
+  - infinito positivo   # oo
+  - infinito negativo   # -oo
+  - infinito complexo   # zoo
+  - não número (NaN)    # nan
+  - razão áurea         # GoldenRatio
 
 # -------------------------------------------------------------------------
-# Solving Equations & Inequalities
+# Racionais
 
-# The specialized solvers are often more efficient and return data in a more predictable format.
-
-Equation Systems:
-  - solve linear systems     # linsolve([x + y - 2, 2*x + y - 3], (x, y))
-  - solve non-linear systems # nonlinsolve([x**2 + y**2 - 1, x - y], (x, y))
-  - solve systems with solve # solve([x + y - 2, 2*x + y - 3], (x, y))
-
-Inequalities:
-  - define inequalities # inequality = 3 - x > 2*x + 1
-  - solve inequalities  # solve(inequality, x)
-  
-# -------------------------------------------------------------------------
-# Linear Algebra
-
-Matrix Creation:
-  - matrix   # M = Matrix([[1, 2], [3, 4]])
-  - identity # eye(3)
-  - zero     # zeros(2, 3)
-  - diagonal # diag(1, 2, 3)
-
-Matrix Operations:
-  - basic operations  # A + B, A * B, 3 * A
-  - core functions    # A.det(), A.inv(), A.transpose()
-  - eigenvalues       # A.eigenvals()
-  - eigenvectors      # A.eigenvects()
-  - solving (Ax=b)    # A.LUsolve(b), A.solve(b)
-  - vector spaces     # A.nullspace(), A.columnspace()
-# -------------------------------------------------------------------------
-# Calculus
-
-Limits:
-  - limit of a function    # limit(f(x), x, a)
-  - unevaluated limit      # Limit(f(x), x, a)
-  - limit at a singularity # limit(sin(x)/x, x, 0)
-  - limit at infinity      # limit(f(x), x, oo)
-  - one-sided limity       # limit(f(x), x, 0, '-')
-
-Derivatives:
-  - derivative of a function # diff(f(x), x)
-  - unevaluated derivative   # Derivative(expr, x, y, y, z, 4)
-  - nth-order derivative     # diff(f(x), x, n)
-  - partial derivative       # diff(f(x, y), x)
-  - mixed partial derivative # diff(f(x, y), x, y)
-
-Integrals:
-  - integral of a function # integrate(f(x), x)
-  - unevaluated integral   # Integral(f(x), x)
-  - definite integral      # integrate(f(x), (x, a, b))
-  - multiple integrals     # integrate(f(x, y), (x, a, b), (y, c, d))
-
-Sequences:
-  - infinite sequence      # sequence(n**2)
-  - range sequence         # sequence(n**2, (n, 1, 11))
-  - get subsequence        # sequence(n**2, (n, 0, oo))[1:n]
-  - extract nth term       # sequence(n**2, (n, 0, oo))[n]
-  - find linear recurrence # seq.find_linear_recurrence(6)
-  - recursive sequence     # fib = RecursiveSeq(y(n - 1) + y(n - 2), y(n), n, [0, 1])
-
-Advanced:
-  - solve differential equations # dsolve(equation, function_to_solve_for)
-  - solve differential equations # dsolve(f(x).diff(x, 2) + 9*f(x), f(x))
-  - Laplace transform            # LaplaceTransform(f(t), t, s)
-  - Laplace transform            # laplace_transform(f(t), t, s)
-  - inverse Laplace transform    # inverse_laplace_transform(f(s), s, t)
-  - Fourier transform            # FourierTransform(f(x), x, k)
-  - Fourier transform            # fourier_transform(f(x), x, k)
-  - inverse Fourier transform    # inverse_fourier_transform(f(k), k, x)
+Racionais:
+  - racional simbólico      # Rational(a, b)
+  - usando S()              # frac = S(a)/b + S(c)/d
+  - combinar termos          # together(frac)
+  - expandir termos          # expand(frac)
+  - decompor frações         # apart(frac)
+  - cancelar termos comuns   # cancel(frac)
+  - notação decimal          # N(frac, precision)
+  - notação decimal          # frac.evalf(precision)
+  - decimal para fração      # nsimplify(0.25)
+  - notação científica       # 1.23e-3
 
 # -------------------------------------------------------------------------
-# Functions & Plotting
+# Números complexos
 
-Functions:
-  - defining a function # f = Lambda(x, expr)
-  - evaluate at a point # f(x)
-  - replaces symbols    # f(x).subs(coeffs)
+Complexos:
+  - unidade imaginária    # I**2 = -1
+  - número complexo        # z = a + b*I
+  - parte real             # re(z)
+  - parte imaginária       # im(z)
+  - valor absoluto         # Abs(z)
+  - argumento (radianos)   # arg(z)
+  - conjugado              # conjugate(z)
+
+Forma exponencial e trigonométrica:
+  - exponencial complexa                 # exp(z)
+  - expandir forma trigonométrica        # expand_complex(expr)
+  - simplificar expressão expandida      # simplify(expr)
+  - reescrever em outra forma            # expr.rewrite(exp)
+  - fatorar forma alternativa            # expr.rewrite(exp).factor()
+
+# -------------------------------------------------------------------------
+# Ambiente simbólico
+
+Uso interativo:
+  - importar tudo (notebooks)     # from sympy import *
+  - importar com alias (scripts)  # import sympy as sp
+  - inicializar sessão simbólica  # init_session()
+
+Em scripts:
+  - preferir imports específicos  # from sympy import sin, cos, solve
+  - ativar impressão LaTeX        # init_printing()
+
+Definição de símbolos:
+  - reais      # x, a, b, c = symbols('x a b c')
+  - inteiros   # k, m, n = symbols('k m n', integer=True)
+  - funções    # f, g = symbols('f g', cls=Function)
+
+Fluxo simbólico básico:
+  - definir expressão simbólica     # expr = a*x**2 + b*x + c
+  - substituir valores              # expr.subs({a:1, b:2, c:-3})
+  - definir função simbólica        # f = Lambda(x, expr)
+  - avaliar em um ponto             # f(0), f(-1)
+  - criar equação simbólica         # Eq(f(x), 0)
+  - resolver equação simbólica      # solve(Eq(f(x), 0), x)
+  - definir coeficientes            # coeffs = {a:1, b:-5, c:6}
+  - aplicar coeficientes            # [sol.subs(coeffs) for sol in solutions]
+  - plotar função simbólica         # plot(f(x).subs(coeffs), (x, -7, 5))
+
+Assunções:
+  - definir assunções           # n = symbols('n', integer=True)
+  - verificar assunções         # x.is_positive, x.is_real
+  - múltiplas assunções         # x = symbols('x', real=True, positive=True)
+  - visualizar assunções        # x.assumptions0
+  - simplificação com assunções # sqrt(x**2) → Abs(x) ou x se positivo
+
+Manipulação simbólica:
+  - expandir expressões          # expand(expr)
+  - fatorar expressões           # factor(expr)
+  - cancelar fatores comuns      # cancel(expr)
+  - combinar frações             # together(expr)
+  - decompor frações parciais    # apart(expr)
+  - simplificação geral          # simplify(expr)
+  - simplificação trigonométrica # trigsimp(expr)
+
+Substituições:
+  - substituir símbolos          # expr.subs(a, b)
+  - substituir múltiplos valores # expr.subs({x:1, y:2})
+  - substituir subexpressão      # expr.subs(sin(2*x), 2*sin(x)*cos(x))
+  - substituição estrutural (rápida) # expr.xreplace({a:b})
+
+# -------------------------------------------------------------------------
+# Solução de equações e inequações
+
+Sistemas de equações:
+  - sistemas lineares     # linsolve([x + y - 2, 2*x + y - 3], (x, y))
+  - sistemas não-lineares # nonlinsolve([x**2 + y**2 - 1, x - y], (x, y))
+  - solução geral         # solve([x + y - 2, 2*x + y - 3], (x, y))
+
+Inequações:
+  - definir desigualdade   # 3 - x > 2*x + 1
+  - resolver desigualdade  # solve(3 - x > 2*x + 1, x)
+
+# -------------------------------------------------------------------------
+# Álgebra Linear
+
+Criação de matrizes:
+  - matriz      # M = Matrix([[1, 2], [3, 4]])
+  - identidade  # eye(3)
+  - zero        # zeros(2, 3)
+  - diagonal    # diag(1, 2, 3)
+
+Operações:
+  - operações básicas   # A + B, A * B, 3*A
+  - determinante        # A.det()
+  - inversa             # A.inv()
+  - transposta          # A.T ou A.transpose()
+  - autovalores         # A.eigenvals()
+  - autovetores         # A.eigenvects()
+  - resolver Ax=b       # A.LUsolve(b), A.solve(b)
+  - espaços vetoriais   # A.nullspace(), A.columnspace()
+
+# -------------------------------------------------------------------------
+# Cálculo
+
+Limites:
+  - limite de função          # limit(f(x), x, a)
+  - limite não avaliado       # Limit(f(x), x, a)
+  - limite em singularidade   # limit(sin(x)/x, x, 0)
+  - limite no infinito        # limit(f(x), x, oo)
+  - limite lateral            # limit(f(x), x, 0, '-')
+
+Derivadas:
+  - derivada simples          # diff(f(x), x)
+  - derivada não avaliada     # Derivative(expr, x)
+  - derivada de ordem n       # diff(f(x), x, n)
+  - derivada parcial          # diff(f(x, y), x)
+  - derivada mista            # diff(f(x, y), x, y)
+
+Integrais:
+  - integral indefinida       # integrate(f(x), x)
+  - integral não avaliada     # Integral(f(x), x)
+  - integral definida          # integrate(f(x), (x, a, b))
+  - integrais múltiplas       # integrate(f(x, y), (x, a, b), (y, c, d))
+
+Séries:
+  - expansão em série de Taylor # f.series(x, 0, 5)
+  - termos de série            # f.series(x, 0, 5).removeO()
+
+Avançado:
+  - equações diferenciais       # dsolve(equation, function)
+  - transformada de Laplace     # laplace_transform(f(t), t, s)
+  - inversa de Laplace          # inverse_laplace_transform(F(s), s, t)
+  - transformada de Fourier     # fourier_transform(f(x), x, k)
+  - inversa de Fourier          # inverse_fourier_transform(F(k), k, x)
+
+# -------------------------------------------------------------------------
+# Funções, Lambdify e Plotagem
+
+Funções simbólicas:
+  - definir função simbólica     # f = Lambda(x, expr)
+  - avaliar função               # f(x)
+  - substituir símbolos           # f(x).subs({a:1, b:2})
 
 Lambda Functions:
-  - define lambda function       # f = Lambda(x, a*x + b)
-  - evaluate a lambda function   # Lambda(x, a*x + b)(2) --> 2a + b
+  - definir função lambda         # f = Lambda(x, a*x + b)
+  - avaliar diretamente           # f(2) -> 2*a + b
 
-Packed Arguments:
-  - packed arguments           # args = symbols('a, b')
-  - define function            # f = Lambda(args, a + b)
-  - evaluate packed arguments  # f(*args) --> a + b
+Conversão para função numérica:
+  - gerar função NumPy/Math       # lambdify(x, expr, 'numpy')
+  - exemplo: f = lambdify(x, sin(x)/x, 'numpy')
 
-Visualization:
-  - symbolic function  # plot(f(x).subs(coeffs), (x, 0, 5))
-  - single function    # plot(x**2, (x, -5, 5))
-  - multiple functions # plot(sin(x), cos(x), (x, -pi, pi))
-  - parametric 2D      # plot_parametric(cos(t), sin(t), (t, 0, 2*pi))
-  - 3d surface plots   # plot3d(x*y, (x, -5, 5), (y, -5, 5))
-  - parametric 3D      # plot3d_parametric_line(cos(t), sin(t), t, (t, -5, 5))
-  - customizing plots  # plot(x**2, title='My Plot', xlabel='x', ylabel='f(x)')
+Visualização:
+  - função simbólica             # plot(f(x), (x, 0, 5))
+  - múltiplas funções            # plot(sin(x), cos(x), (x, -pi, pi))
+  - paramétrica 2D               # plot_parametric(cos(t), sin(t), (t, 0, 2*pi))
+  - superfície 3D                # plot3d(x*y, (x, -5, 5), (y, -5, 5))
+  - linha paramétrica 3D         # plot3d_parametric_line(cos(t), sin(t), t, (t, -5, 5))
+  - personalização               # plot(x**2, title='Meu gráfico', xlabel='x', ylabel='f(x)')
 
 # -------------------------------------------------------------------------
-# Intervals & Sets
+# Intervalos e Conjuntos
 
-Creation:
-  - symbolic interval   # Interval(a, b)
-  - numerical interval  # Interval(0, 1)
-  - open interval       # Interval.open(0, 1)
-  - right open interval # Interval(0, 1, right_open=True)
-  - left open interval  # Interval(0, 1, left_open=True)
-  
-Compound Intervals:
-  - image of the interval # imageset(sin, Interval(0, pi))
-  - union                 # A.union(B)
-  - intersection          # A.intersect(B)
-  - symmetric difference  # A.symmetric_difference(B)
-  - complement            # A.complement(B)
-  
-Interval Elements:
-  - start and end points   # A.boundary
-  - interior points        # A.interior
-  - closure of a interval  # A.closure
-  - supremum of a interval # A.sup
-  - infimum of a interval  # A.inf
+Criação:
+  - intervalo fechado      # Interval(a, b)
+  - intervalo numérico     # Interval(0, 1)
+  - intervalo aberto       # Interval.open(0, 1)
+  - semiaberto direita     # Interval(0, 1, right_open=True)
+  - semiaberto esquerda    # Interval(0, 1, left_open=True)
 
-Interval Checks:
-  - Check for openness    # A.is_open
-  - Check for containment # A.contains(0.5)
-  - if no element in common       # A.is_disjoint(B)
-  - if is a subset                # A.is_subset(B)
-  - if is a superset              # A.is_superset(B)
-  - if is a proper subset         # A.is_proper_subset(B)
+Operações:
+  - imagem de intervalo    # imageset(sin, Interval(0, pi))
+  - união                  # A.union(B)
+  - interseção             # A.intersect(B)
+  - diferença simétrica    # A.symmetric_difference(B)
+  - complemento            # A.complement(B)
+
+Propriedades:
+  - limites (bordas)       # A.boundary
+  - interior                # A.interior
+  - fechamento              # A.closure
+  - supremo                 # A.sup
+  - ínfimo                  # A.inf
+  - verificar abertura      # A.is_open
+  - verificar inclusão      # A.contains(0.5)
+  - disjunção               # A.is_disjoint(B)
+  - subconjunto             # A.is_subset(B)
+  - superconjunto           # A.is_superset(B)
+  - subconjunto próprio     # A.is_proper_subset(B)
 
 # -------------------------------------------------------------------------
-# Specialized Mathematical Domains
+# Domínios Matemáticos Especializados
 
-Statistics:
-  - random variable         # X = Normal('X', mu, sigma)
-  - calculate probability   # P(X > mu)
-  - calculate expectation   # E(X)
-  - calculate variance      # variance(X)
-  - conditional probability # P(X > 0, Die('D') > 4)
+Estatística:
+  - variável aleatória       # X = Normal('X', mu, sigma)
+  - probabilidade             # P(X > mu)
+  - esperança (média)         # E(X)
+  - variância                 # variance(X)
+  - probabilidade condicional # P(X > 0, Die('D') > 4)
 
-Discrete Mathematics:
-  - recurrence relation        # rsolve(f(n+2) - f(n+1) - f(n), f(n))
-  - specify initial conditions # rsolve(f(n+2) - f(n+1) - f(n), f(n), {f(0): 0, f(1): 1})
-  - summation                  # Sum(k,(k, 1, m))
-  - product                    # Product(k, (k, 1, n))
+Matemática Discreta:
+  - recorrência simples       # rsolve(f(n+2) - f(n+1) - f(n), f(n))
+  - com condições iniciais     # rsolve(..., {f(0):0, f(1):1})
+  - somatório                 # Sum(k, (k, 1, m))
+  - produto                   # Product(k, (k, 1, n))
 
-Geometry:
-  - primitive object         # point = Point(0, 1)
-  - one-dimensional objects  # line = Line(p1, p2)
-  - angle between two lines  # line1.angle_between(line2)
-  - area calculation         # region.area
-  regions:
-    - triangle               # Triangle(p1, p2, p3)
-    - circle                 # Circle(center, radius)
-    - ellipse                # Ellipse(center, hradius, vradius, eccentricity)
-    - square                 # RegularPolygon(p, 1, 4)
+Geometria:
+  - ponto                     # Point(0, 1)
+  - linha                     # Line(p1, p2)
+  - ângulo entre linhas        # line1.angle_between(line2)
+  - área de região             # region.area
+  Regiões:
+    - triângulo               # Triangle(p1, p2, p3)
+    - círculo                 # Circle(center, radius)
+    - elipse                  # Ellipse(center, hradius, vradius)
+    - quadrado                # RegularPolygon(p, 1, 4)
 
-Logical Expressions:
-  - standard logical operators   # ~ p | p & q
-  - symbolic boolean expressions # (p | q).subs({p: True, q: False})
-  - standard logical notation    # Or(Not(p),And(p, q))
-  - not logical operators        # Not(p), Nor(p, q), Nand(p, q)
-  - exclusive relation           # Exclusive(p, q, x)
-  - exclusive logical operators  # Xor(p, q), Xnor(p, q)
-  - implies relation             # (p >> q)
-  - equivalence relation         # Equivalent(p, q)
-  - if-then-else clause          # ITE(x, p, q).subs({x: True})
+Lógica simbólica:
+  - operadores padrão          # ~p | (p & q)
+  - expressões booleanas       # (p | q).subs({p: True, q: False})
+  - notação simbólica          # Or(Not(p), And(p, q))
+  - operadores lógicos         # Not(p), Or(p, q), And(p, q)
+  - xor/xnor                   # Xor(p, q), Equivalent(p, q)
+  - implicação                 # Implies(p, q)
+  - equivalência               # Equivalent(p, q)
+  - if-then-else               # ITE(x, p, q).subs({x: True})
